@@ -1,9 +1,28 @@
 name: 02 - Workflow Events
-on: push
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs daily at midnight
+  push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   echo:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Show the trigger
-        run: echo "This workflow was triggered by a push event."
+        run: echo "This workflow was triggered by a push event"
+#   pull-request-job:
+#     if: github.event_name == 'pull_request'
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Show the trigger
+#         run: echo "This workflow was triggered by a pull request event"
+
+#   schedule-job:
+#     if: github.event_name == 'schedule'
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Show the trigger
+#         run: echo "This workflow was triggered by a scheduled event"
