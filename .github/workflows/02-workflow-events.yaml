@@ -13,16 +13,23 @@ jobs:
     steps:
       - name: Show the trigger
         run: echo "This workflow was triggered by a push event"
-#   pull-request-job:
-#     if: github.event_name == 'pull_request'
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Show the trigger
-#         run: echo "This workflow was triggered by a pull request event"
+  pull-request-job:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show the trigger
+        run: echo "This workflow was triggered by a pull request event"
 
-#   schedule-job:
-#     if: github.event_name == 'schedule'
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Show the trigger
-#         run: echo "This workflow was triggered by a scheduled event"
+  schedule-job:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show the trigger
+        run: echo "This workflow was triggered by a scheduled event"
+
+  workflow_dispatch-job:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show the trigger
+        run: echo "This workflow was triggered manually via workflow_dispatch"
